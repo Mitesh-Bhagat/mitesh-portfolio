@@ -977,3 +977,28 @@ body {
     .contact-links { flex-direction: column; gap: 2rem; }
 }
 
+/* ---- View Certificate / Document Button ---- */
+.btn-view-cert {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    margin-top: 1rem;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: var(--accent-gold); /* Uses your Teal variable */
+    border: 1px solid var(--accent-gold);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    transition: all 0.2s ease;
+    width: fit-content;
+}
+
+.btn-view-cert:hover {
+    background-color: var(--accent-gold);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.2);
+}
