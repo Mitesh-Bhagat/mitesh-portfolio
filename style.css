@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap');
 /* ---- Variables & Reset ---- */
 :root {
     /* --- SOFT HORIZON PALETTE (Light Mode / Eye-Care) --- */
@@ -78,6 +79,7 @@ body {
     display: flex;
     align-items: center;
     color: var(--text-primary);
+    margin-top: 10px;
 }
 
 .section-title::after {
@@ -240,6 +242,7 @@ body {
     color: var(--text-secondary);
     font-size: 1.15rem;
     margin-bottom: 3rem;
+    
 }
 
 
@@ -500,6 +503,14 @@ body {
     }
 }
 
+/* Container to center buttons at the bottom of sections */
+.centered-action {
+    margin-top: 3rem; /* Adds space above the button */
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
 
 /* ---- Projects Section ---- */
 
@@ -580,10 +591,9 @@ body {
 .pce-grid {
     display: grid;
     /* Force exactly 2 columns sharing equal space */
-    grid-template-columns: 1fr 1fr; 
-    gap: 3rem; /* Wider gap for larger cards */
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 1rem; /* Wider gap for larger cards */
     padding-bottom: 2rem;
-    width: 100%;    
 }
 
 /* Mobile Responsiveness: Stack them on small screens */
@@ -959,24 +969,6 @@ body {
     opacity: 0.7;
 }
 
-/* ---- Media Queries ---- */
-@media screen and (max-width: 768px) {
-    .section-title::after { width: 100px; }
-    .nav-links { display: none; } 
-    .logo { margin: 0 auto; }
-    .hero-content h1 { font-size: 50px; }
-    .hero-btns { display: flex; flex-direction: column; gap: 1rem; }
-    .btn-secondary { margin-left: 0; }
-    .about-grid { grid-template-columns: 1fr; }
-    .about-visual { display: none; }
-    .timeline::after { left: 31px; }
-    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-    .timeline-item::after { left: 22px; }
-    .left::after, .right::after { left: 22px; }
-    .right { left: 0%; }
-    .contact-links { flex-direction: column; gap: 2rem; }
-}
-
 /* ---- View Certificate / Document Button ---- */
 .btn-view-cert {
     display: inline-flex;
@@ -1001,4 +993,90 @@ body {
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.2);
+}
+
+/* ---- Media Queries (Fixed Navbar) ---- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Navbar Fixes: Stack Logo and Links */
+    .nav-container {
+        flex-direction: column; /* Puts Logo on top, Links below */
+        gap: 15px;
+    }
+/* Replace the .nav-links rule in your Mobile Media Query with this */
+.nav-links {
+    display: flex;
+    flex-wrap: nowrap;       /* Stop them from stacking */
+    overflow-x: auto;        /* Allow side scrolling */
+    white-space: nowrap;     /* Keep text on one line */
+    justify-content: flex-start; /* Start from left */
+    width: 100%;
+    padding-bottom: 5px;     /* Space for scrollbar */
+    
+    /* Hide Scrollbar for cleaner look */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.nav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 15px; /* Spacing between items */
+        
+        /* 1. Add Padding so the last item isn't cut off by the fade */
+        padding-bottom: 5px;
+        padding-right: 30px; 
+        
+        /* 2. The Fade Effect (Modern Browsers) */
+        /* This creates a transparent gradient on the right edge */
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+
+        /* Hide Scrollbar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .logo { 
+        margin: 0 auto; 
+    }
+
+    /* 2. Other Mobile Adjustments */
+    .section-title::after { width: 100px; }
+    
+    .hero-content h1 { font-size: 40px; } 
+    
+    .hero-btns { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 1rem; 
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%; 
+        text-align: center;
+        margin-left: 0; 
+    }
+
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    
+    /* Timeline adjustments */
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-item::after { left: 22px; }
+    .left::after, .right::after { left: 22px; }
+    .right { left: 0%; }
+    
+    /* Contact footer */
+    .contact-links { flex-direction: column; gap: 2rem; }
 }
