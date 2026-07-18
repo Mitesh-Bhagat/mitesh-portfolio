@@ -812,14 +812,20 @@ body {
 }
 
 /* ---- Course Accordion Styles ---- */
+@media screen and (max-width: 768px) {
+    .accordion-wrapper {
+        column-count: 1; 
+    }
+}
 
 .accordion-wrapper {
-    max-width: 900px; /* Limits width for better readability */
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    column-count: 2;         /* Uses columns instead of grid */
+    column-gap: 1.5rem;      /* Space between columns */
+    display: block;          /* Remove display: grid */
 }
+
 
 .course-accordion {
     background-color: #ffffff;
@@ -828,6 +834,12 @@ body {
     overflow: hidden;
     box-shadow: var(--shadow-warm);
     transition: all 0.3s ease;
+    
+    /* ADD THESE 3 LINES */
+    break-inside: avoid;     
+    margin-bottom: 1.5rem;   
+    display: inline-block;   
+    width: 100%;
 }
 
 /* Hover effect for the whole block */
