@@ -814,10 +814,16 @@ body {
 /* ---- Course Accordion Styles ---- */
 @media screen and (max-width: 768px) {
     .accordion-wrapper {
-        column-count: 1; 
+        column-count: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .course-accordion {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
     }
 }
-
 .accordion-wrapper {
     max-width: 1200px;
     margin: 0 auto;
